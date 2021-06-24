@@ -29,9 +29,9 @@ class Board
     end
 
     def attack(pos)
-        if Board[pos] == :S 
+        if self[pos] == :S 
             self[pos] = :H
-            print "you sunk my battleship!"
+            puts "you sunk my battleship!"
             return true
         else
             self[pos] = :X
