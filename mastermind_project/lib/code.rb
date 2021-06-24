@@ -42,7 +42,7 @@ class Code
   def num_exact_matches(guess)
     count = 0
     (0...guess.length).each do |i|
-      if @pegs[i] == guess[i]    #@peg[i] why self[i] instead
+      if @pegs[i] == guess[i] 
         count += 1
       end
     end
@@ -51,12 +51,24 @@ class Code
   end
 
   def num_near_matches(guess)
-    count = 0
-    (0...guess.length).each do |i|
-      if guess[i] != @pegs[i] && @pegs.include?(guess[i])
-        count += 1
+    guess_dup = guess.pegs.dup
+    code_dup = self.pegs.dup
+
+   guess_dup.each_with_index do |peg, i|
+      if peg == code_dup[i]
+        guess_dup[i] = nil
+        code_dup[i] = nil
       end
     end
+      code_dup.delete(nil)
+      guess_dup.delete(nil)
+      count = 0
+      guess_dup.each_with_index do |peg, i|
+        if code_dup.include?(peg)
+          count += 1
+          code_up.delete_at(code_dup.index(peg))
+        end
+      end                                                                 
     count
   end
 
