@@ -14,8 +14,8 @@ class Mastermind
         print "Enter code"
         guess = gets.chomp
         Code.from_string(guess)
-        self.print_matches(guess)
-        self.num_exact_matches(guess) == @secret_code.length
+        print_matches(guess)
+        num_exact_matches(guess) == @secret_code.length
     end
 
 end
